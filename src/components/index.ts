@@ -6,6 +6,7 @@ export * from "./product/quantity-selector/QuantitySelector";
 export * from "./products/product-grid/ProductGrid";
 export * from "./products/product-grid/ProductGridItem";
 
+export * from "./ui/footer/Footer";
 export * from "./ui/not-found/NotFoundPage";
 export * from "./ui/sidebar/Sidebar";
 export * from "./ui/title/Title";
