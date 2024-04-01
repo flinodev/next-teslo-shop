@@ -28,12 +28,12 @@ export default function CategoryPage({ params }: Props) {
 
   return (
     <>
-      <Title
+      {/* <Title
         title={`${labels[id]}`}
         subtitle={`Productos para ${labels[id]}`}
         className="mb-2"
       />
-      <ProductGrid products={products} />
+      <ProductGrid products={products} /> */}
     </>
   );
 }
