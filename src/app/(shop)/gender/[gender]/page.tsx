@@ -1,8 +1,9 @@
+export const revalidate = 60;
+
 import { getPaginationProductsWithImages } from "@/actions";
 import { ProductGrid, Title, Pagination } from "@/components";
 import { Category } from "@/interfaces";
 import { Gender } from "@prisma/client";
-import { notFound } from "next/navigation";
 
 interface Props {
   params: {
