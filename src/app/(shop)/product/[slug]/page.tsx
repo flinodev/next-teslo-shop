@@ -10,6 +10,7 @@ import { titleFont } from "@/config/fonts";
 import { notFound } from "next/navigation";
 import { StockLabel } from "../../../../components/product/stock-label/StockLabel";
 import { Metadata, ResolvingMetadata } from "next";
+import { AddToCart } from "./ui/AddToCart";
 
 interface Props {
   params: {
@@ -72,16 +73,8 @@ export default async function ProductPage({ params }: Props) {
           {product.title}
         </h1>
         <p className="text-lg mb-5">${product.price}</p>
-        {/* Size Selector */}
-        <SizeSelector
-          selectedSize={product.sizes[0]}
-          availableSizes={product.sizes}
-        />
-        {/* Qty selector */}
-        <QuantitySelector quantity={2} />
 
-        {/* Add to cart button */}
-        <button className="btn-primary my-5">Agregar al carrito</button>
+        <AddToCart product={product} />
 
         {/* Description */}
         <h3 className="font-bold text-sm">Descripción</h3>
