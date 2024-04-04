@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { QuantitySelector } from "../../../components/product/quantity-selector/QuantitySelector";
 //import { redirect } from "next/navigation";
+import { ProductsInCart } from "./ui/ProductsInCart";
+import { OrderSummary } from "./ui/OrderSummary";
 
 const productsInCart = [
   initialData.products[0],
@@ -24,50 +26,10 @@ export default function CartPage() {
               Continua comprando
             </Link>
 
-            {productsInCart.map((product) => (
-              <div key={product.slug} className="flex mb-5">
-                <Image
-                  src={`/products/${product.images[0]}`}
-                  width={100}
-                  height={100}
-                  alt={product.title}
-                  className="rounded mr-5"
-                />
-
-                <div>
-                  <p>{product.title}</p>
-                  <p>${product.price}</p>
-                  <QuantitySelector quantity={3} />
-                  <button className="underline mt-3">Remover</button>
-                </div>
-              </div>
-            ))}
+            <ProductsInCart />
           </div>
 
-          <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
-            <h2 className="text-2xl mb-2">Resumen de orden</h2>
-            <div className="grid grid-cols-2">
-              <span>No. Productos</span>
-              <span className="text-right">3 artículos</span>
-
-              <span>Subtotal</span>
-              <span className="text-right">$300</span>
-
-              <span>Impuestos (15%)</span>
-              <span className="text-right">$45</span>
-
-              <span className="text-2xl mt-5">Total</span>
-              <span className="text-2xl mt-5 text-right">$345</span>
-            </div>
-            <div className="mb-5 mt-2 w-full">
-              <Link
-                className="flex btn-primary justify-center"
-                href="/checkout/address"
-              >
-                Checkout
-              </Link>
-            </div>
-          </div>
+          <OrderSummary />
         </div>
       </div>
     </div>

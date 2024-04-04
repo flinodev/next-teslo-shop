@@ -5,7 +5,15 @@ import { persist } from "zustand/middleware";
 interface State {
   cart: CartProduct[];
   getTotalItems: () => number;
+  getSummary: () => {
+    subtotal: number;
+    tax: number;
+    total: number;
+    itemsInCart: number;
+  };
   addProductToCart: (product: CartProduct) => void;
+  updateProductQuantity: (product: CartProduct, quantity: number) => void;
+  removeProduct: (product: CartProduct) => void;
 }
 
 export const useCartStore = create<State>()(
@@ -15,6 +23,25 @@ export const useCartStore = create<State>()(
       getTotalItems: () => {
         const { cart } = get();
         return cart.reduce((total, item) => total + item.quantity, 0);
+      },
+      getSummary: () => {
+        const { cart } = get();
+        const itemsInCart = cart.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+        const subtotal = cart.reduce(
+          (subtotal, item) => item.quantity * item.price + subtotal,
+          0
+        );
+        const tax = subtotal * 0.15;
+        const total = subtotal + tax;
+        return {
+          subtotal,
+          tax,
+          total,
+          itemsInCart,
+        };
       },
       addProductToCart: (product: CartProduct) => {
         const { cart } = get();
@@ -40,6 +67,25 @@ export const useCartStore = create<State>()(
           return cartItem;
         });
 
+        set({ cart: updatedCartProducts });
+      },
+      updateProductQuantity: (product: CartProduct, quantity: number) => {
+        const { cart } = get();
+        const updatedCartProducts = cart.map((item) => {
+          if (item.id === product.id && item.size === product.size) {
+            return { ...item, quantity: quantity };
+          }
+          return { ...item };
+        });
+        set({ cart: updatedCartProducts });
+      },
+      removeProduct: (product: CartProduct) => {
+        const { cart } = get();
+        const updatedCartProducts: CartProduct[] = [];
+        cart.forEach((item) => {
+          if (item.id === product.id && item.size === product.size) return;
+          updatedCartProducts.push(item);
+        });
         set({ cart: updatedCartProducts });
       },
     }),
