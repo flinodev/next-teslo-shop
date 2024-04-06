@@ -40,6 +40,7 @@ export const getPaginationProductsWithImages = async ({
       })),
     };
   } catch (err) {
+    console.log(err);
     throw Error("No se pudo cargar los elementos");
   }
 };
