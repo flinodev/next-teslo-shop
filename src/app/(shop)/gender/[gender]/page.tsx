@@ -1,5 +1,5 @@
 export const revalidate = 60;
-
+import React from "react";
 import { getPaginationProductsWithImages } from "@/actions";
 import { ProductGrid, Title, Pagination } from "@/components";
 import { Category } from "@/interfaces";

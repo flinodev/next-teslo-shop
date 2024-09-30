@@ -1,11 +1,6 @@
-export const revalidate = 604800;
+export const revalidate = 604800; // 7 días
 import { getProductBySlug } from "@/actions";
-import {
-  ProductMobileSlideshow,
-  ProductSlideshow,
-  QuantitySelector,
-  SizeSelector,
-} from "@/components";
+import { ProductMobileSlideshow, ProductSlideshow } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { notFound } from "next/navigation";
 import { StockLabel } from "../../../../components/product/stock-label/StockLabel";
@@ -46,6 +41,7 @@ export default async function ProductPage({ params }: Props) {
   const { slug } = params;
 
   const product = await getProductBySlug(slug);
+  console.log({ product });
 
   if (!product) {
     notFound();

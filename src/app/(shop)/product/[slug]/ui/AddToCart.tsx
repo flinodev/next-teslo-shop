@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { SizeSelector, QuantitySelector } from "@/components";
 import { Product, Size } from "@/interfaces";
 import { useCartStore } from "@/store";

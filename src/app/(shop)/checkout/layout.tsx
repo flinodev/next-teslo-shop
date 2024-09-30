@@ -1,3 +1,4 @@
+import React from "react";
 import { auth } from "@/auth.config";
 import { redirect } from "next/navigation";
 

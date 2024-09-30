@@ -1,4 +1,4 @@
-import { ProductGrid, Title } from "@/components";
+import React from "react";
 import { Category } from "@/interfaces";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";

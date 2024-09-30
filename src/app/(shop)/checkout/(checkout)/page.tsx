@@ -1,25 +1,25 @@
 import { Title } from "@/components";
+import Image from "next/image";
 import Link from "next/link";
 import { ProductsInCart } from "./ui/ProductsInCart";
-import { OrderSummary } from "./ui/OrderSummary";
+import { PlaceOrder } from "./ui/PlaceOrder";
 
-export default function CartPage() {
-  //redirect("/empty");
+export default function CheckoutPage() {
   return (
     <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
       <div className="flex flex-col w-[1000px] ">
-        <Title title="Carrito" />
+        <Title title="Verificar orden" />
         <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className="flex flex-col mt-5">
-            <span className="text-xl"> Agregar más items</span>
-            <Link href="/" className="underline mb-5">
-              Continua comprando
+            <span className="text-xl">Verifica tu compra</span>
+            <Link href="/cart" className="underline mb-5">
+              Editar carrito
             </Link>
 
-            <ProductsInCart />
+            <ProductsInCart></ProductsInCart>
           </div>
 
-          <OrderSummary />
+          <PlaceOrder></PlaceOrder>
         </div>
       </div>
     </div>

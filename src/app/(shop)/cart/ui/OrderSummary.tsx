@@ -3,12 +3,16 @@
 import { useCartStore } from "@/store";
 import { currencyFormat } from "@/utils";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const OrderSummary = () => {
   const { subtotal, tax, total, itemsInCart } = useCartStore((state) =>
     state.getSummary()
   );
+  if (itemsInCart <= 0) {
+    redirect("/empty");
+  }
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     setLoaded(true);
