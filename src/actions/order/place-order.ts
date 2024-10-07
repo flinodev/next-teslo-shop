@@ -33,10 +33,7 @@ export const placeOrder = async (
     },
   });
 
-  console.log({ productsDB });
-
   const itemsInOrder = products.reduce((count, p) => count + p.quantity, 0);
-  console.log({ itemsInOrder });
 
   const { subtotal, tax, total } = products.reduce(
     (totals, item) => {
@@ -120,7 +117,6 @@ export const placeOrder = async (
         orderAddress,
       };
     });
-    console.log(prismaTx);
     return {
       ok: true,
       order: prismaTx.order,

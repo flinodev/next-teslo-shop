@@ -19,10 +19,6 @@ export const PlaceOrder = () => {
     state.getSummary()
   );
 
-  if (itemsInCart <= 0) {
-    redirect("/empty");
-  }
-
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
 
@@ -106,10 +102,11 @@ export const PlaceOrder = () => {
         </p>
         <p className="text-red-500 p-2">{errorMessage}</p>
         <button
+          disabled={itemsInCart === 0}
           onClick={onPlaceOrder}
           className={clsx({
             "btn-primary": !isPlacingOrder,
-            "btn-disabled": isPlacingOrder,
+            "btn-disabled": isPlacingOrder || itemsInCart === 0,
           })}
         >
           Colocar orden

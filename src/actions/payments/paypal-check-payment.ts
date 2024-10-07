@@ -6,7 +6,6 @@ import { revalidatePath } from "next/cache";
 
 export const paypalCheckPayment = async (transactionId: string) => {
   const authToken = await getPaypalBearerToken();
-  console.log({ transactionId, authToken });
   if (!authToken) {
     return {
       ok: false,
@@ -30,7 +29,6 @@ export const paypalCheckPayment = async (transactionId: string) => {
   }
 
   try {
-    console.log({ status, purchase_units });
     const orderId = purchase_units[0].invoice_id;
     await prisma.order.update({
       where: { id: orderId },

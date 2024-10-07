@@ -47,7 +47,6 @@ async function main() {
       data: imagesData,
     });
   });
-  console.log(categoriesMap);
 
   console.log("Seed executed successfully!");
 }

@@ -17,28 +17,33 @@ export const ProductsInCart = () => {
   }
   return (
     <>
-      {productsInCart.map((product) => (
-        <div key={`${product.slug}_${product.size}`} className="flex mb-5">
-          <Image
-            src={`/products/${product.image}`}
-            width={100}
-            height={100}
-            alt={product.title}
-            className="rounded mr-5"
-          />
+      {productsInCart.map((product) => {
+        const source = product.image.startsWith("http")
+          ? product.image
+          : "/products/" + product.image;
+        return (
+          <div key={`${product.slug}_${product.size}`} className="flex mb-5">
+            <Image
+              src={source}
+              width={100}
+              height={100}
+              alt={product.title}
+              className="rounded mr-5"
+            />
 
-          <div>
-            <p>
-              <span className="font-bold">{product.size}</span> -{" "}
-              {product.title} ({product.quantity})
-            </p>
-            <p className="font-bold">
-              {" "}
-              {currencyFormat(product.price * product.quantity)}{" "}
-            </p>
+            <div>
+              <p>
+                <span className="font-bold">{product.size}</span> -{" "}
+                {product.title} ({product.quantity})
+              </p>
+              <p className="font-bold">
+                {" "}
+                {currencyFormat(product.price * product.quantity)}{" "}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </>
   );
 };
