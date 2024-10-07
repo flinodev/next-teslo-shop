@@ -1,26 +1,26 @@
-export * from "./address/delete-user-address";
-export * from "./address/get-user-address";
-export * from "./address/set-user-address";
+export { deleteUserAddress } from "./address/delete-user-address";
+export { getUserAddress } from "./address/get-user-address";
+export { setUserAddress } from "./address/set-user-address";
 
-export * from "./auth/login";
-export * from "./auth/logout";
-export * from "./auth/register";
+export { authenticate, login } from "./auth/login";
+export { logout } from "./auth/logout";
+export { registerUser } from "./auth/register";
 
-export * from "./categories/get-categories";
+export { getCategories } from "./categories/get-categories";
 
-export * from "./country/get-countries";
+export { getCountries } from "./country/get-countries";
 
-export * from "./order/get-paginated-orders";
-export * from "./order/get-order-by-id";
-export * from "./order/get-orders";
-export * from "./order/place-order";
+export { getPaginatedOrders } from "./order/get-paginated-orders";
+export { getOrderById } from "./order/get-order-by-id";
+export { getOrders } from "./order/get-orders";
+export { placeOrder } from "./order/place-order";
 
-export * from "./payments/set-transaction-id";
+export { setTransactionId } from "./payments/set-transaction-id";
 
-export * from "./products/delete-product-image";
-export * from "./products/create-update-product";
-export * from "./products/product-pagination";
-export * from "./products/get-product-by-slug";
-export * from "./products/get-stock-by-slug";
+export { deleteProductImage } from "./products/delete-product-image";
+export { createUpdateProduct } from "./products/create-update-product";
+export { getPaginationProductsWithImages } from "./products/product-pagination";
+export { getProductBySlug } from "./products/get-product-by-slug";
+export { getStockBySlug } from "./products/get-stock-by-slug";
 
-export * from "./users/get-users";
+export { getUsers } from "./users/get-users";
